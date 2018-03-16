@@ -11,8 +11,11 @@ public final class TheQuestionListBundle {
     private static final Locale english = new Locale("en", "US");
     private static final Locale russian = new Locale("ru", "RU");
     private static final int exitNumber = 666;
-    public static ResourceBundle myBundle = ResourceBundle.getBundle("main/t02/QuestionList");
+    private static ResourceBundle myBundle = ResourceBundle.getBundle("main/t02/QuestionList");
 
+    public static String getString(String key){
+        return myBundle.getString(key);
+    }
 
     public static void setLanguage(Scanner in) {
         String language = in.next();

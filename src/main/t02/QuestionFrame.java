@@ -21,7 +21,7 @@ public class QuestionFrame extends JFrame {
 
 
     public QuestionFrame() {
-        setTitle(TheQuestionListBundle.myBundle.getString("title"));
+        setTitle(TheQuestionListBundle.getString("title"));
         setSize(800, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -49,11 +49,11 @@ public class QuestionFrame extends JFrame {
 
 
         numberField = new JTextField();
-        button = new JButton(TheQuestionListBundle.myBundle.getString("get_the_answer"));
+        button = new JButton(TheQuestionListBundle.getString("get_the_answer"));
 
         add(numberField, "0 2");
         add(button, "1 2");
-        answer = new JTextArea(TheQuestionListBundle.myBundle.getString("please_type_the_number_of_question"));
+        answer = new JTextArea(TheQuestionListBundle.getString("please_type_the_number_of_question"));
         add(answer, "0 3 1 3");
 
 
@@ -68,7 +68,7 @@ public class QuestionFrame extends JFrame {
                 answer.setText(TheQuestionListBundle.getAnswer(numberOfQuestion));
             } catch (NumberFormatException exception){
                 System.out.println(exception.getMessage());
-                answer.setText(TheQuestionListBundle.myBundle.getString("not_a_number"));
+                answer.setText(TheQuestionListBundle.getString("not_a_number"));
             }
 
         };
@@ -82,9 +82,9 @@ public class QuestionFrame extends JFrame {
             System.out.println(Locale.getDefault().toString());
             System.out.println(TheQuestionListBundle.printListOfQuestions());
             listQuestions.setText(TheQuestionListBundle.printListOfQuestions());
-            button.setText(TheQuestionListBundle.myBundle.getString("get_the_answer"));
-            answer.setText(TheQuestionListBundle.myBundle.getString("please_type_the_number_of_question"));
-            setTitle(TheQuestionListBundle.myBundle.getString("title"));
+            button.setText(TheQuestionListBundle.getString("get_the_answer"));
+            answer.setText(TheQuestionListBundle.getString("please_type_the_number_of_question"));
+            setTitle(TheQuestionListBundle.getString("title"));
         });
 
     }
