@@ -10,10 +10,10 @@ import java.util.Date;
  */
 public class CrazyLogger {
     private StringBuilder stringBuilder = new StringBuilder();
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     private String methodUsed = "";
     private String methodUsedBefore = "";
     private int count = 0;
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     private static final int TEN = 10;
 
     public CrazyLogger() {
@@ -55,7 +55,7 @@ public class CrazyLogger {
         return returner;
     }
 
-    public void findInfo(String info) {
+    public int findInfo(String info) {
         if (!methodUsed.contains("date") && !methodUsed.contains("year")) {
             methodUsedBefore = methodUsed;
             methodUsed = "findInfo(String info)";
@@ -89,15 +89,16 @@ public class CrazyLogger {
             if (count == 1) {
                 result = String.format("successfully and have found %d message", count);
             } else {
-                result = String.format("unsuccessfully and have found %d messages", count);
+                result = String.format("successfully and have found %d messages", count);
             }
         }
-
         addMessage(String.format("User was searching for information about \"%s\" with %s %s", info, methodUsed, result));
+        int countKeeper = count;
         count = 0;
+        return result.equals("unsuccessfully") ? 0 : countKeeper;
     }
 
-    public void findInfo(int day, int month, int year, int hour, int minute) {
+    public int findInfo(int day, int month, int year, int hour, int minute) {
         StringBuilder stringBuilderInner = new StringBuilder();
         if (day < TEN) {
             stringBuilderInner.append("0").append(day).append(".");
@@ -123,14 +124,14 @@ public class CrazyLogger {
         String string = stringBuilderInner.toString();
         methodUsedBefore = methodUsed;
         methodUsed = "findInfo(int day, int month, int year, int hour, int minute)";
-        this.findInfo(string);
+        return findInfo(string);
     }
 
-    public void findInfo(Date date) {
+    public int findInfo(Date date) {
         String string = dateFormat.format(date);
         methodUsedBefore = methodUsed;
         methodUsed = "findInfo(Date date)";
-        this.findInfo(string);
+        return findInfo(string);
     }
 
     public String toString() {

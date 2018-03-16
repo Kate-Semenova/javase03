@@ -1,7 +1,5 @@
 package main.t01;
 
-import main.t01.CrazyLogger;
-
 import java.util.Date;
 
 /**
@@ -33,7 +31,5 @@ public class Run {
         System.out.println("================================");
         System.out.println("==========The whole log=========");
         System.out.println(crazyLogger.toString());
-
-        System.out.println();
     }
 }
