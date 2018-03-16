@@ -9,7 +9,6 @@ import java.time.Instant;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 /**
  * Created by Ekaterina Semenova on 11.03.2018.
@@ -57,7 +56,7 @@ public class CrazyLoggerTest {
     }
 
     @Test
-    public void findInfoStringShouldPrintInfoAndReturnNumberOfInformationFound(){
+    public void findInfoStringShouldPrintInfoAndReturnNumberOfInformationFound() {
         StringBuilder expected = new StringBuilder(dateString)
                 .append(" - CrazyLogger has been created\n")
                 .append(dateString)
@@ -65,14 +64,12 @@ public class CrazyLoggerTest {
                 .append(message)
                 .append("\n").append(dateString)
                 .append(String.format(" - User was searching for information about \"%s\" with %s %s",
-                        "hell", "findInfo(String info)", "successfully and found 1 message\n"))
-                ;
+                        "hell", "findInfo(String info)", "successfully and found 1 message\n"));
         //ТУТ ПОЛУЧИЛАСЬ ОШИБКА, ПОТОМУ ЧТО hell и Hell. Специально не стала ничего исправлять, пусть будет ошибка. Повод улучшить кое-что в коде
         //Вообще, я рада ошибке)
         assertEquals(1, crazyLogger.findInfo("Hell"));
         assertEquals(expected.toString(), crazyLogger.toString());
     }
-
 
 
 }
