@@ -21,7 +21,7 @@ public class QuestionFrame extends JFrame {
 
 
     public QuestionFrame() {
-        setTitle(TheQuestionListBundle.getString("title"));
+        setTitle(QuestionListBundle.getString("title"));
         setSize(800, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -44,31 +44,30 @@ public class QuestionFrame extends JFrame {
         add(language, "0 0 0 0'");
         add(comboBox, "1 0");
         listQuestions = new JTextArea();
-        listQuestions.setText(TheQuestionListBundle.printListOfQuestions());
+        listQuestions.setText(QuestionListBundle.printListOfQuestions());
         add(new JScrollPane(listQuestions), "0 1 1 1");
 
 
         numberField = new JTextField();
-        button = new JButton(TheQuestionListBundle.getString("get_the_answer"));
+        button = new JButton(QuestionListBundle.getString("get_the_answer"));
 
         add(numberField, "0 2");
         add(button, "1 2");
-        answer = new JTextArea(TheQuestionListBundle.getString("please_type_the_number_of_question"));
+        answer = new JTextArea(QuestionListBundle.getString("please_type_the_number_of_question"));
         add(answer, "0 3 1 3");
-
 
     }
 
     private void initInteraction() {
-        ActionListener actionListenerForNumberField = e -> {
+        ActionListener actionListenerForNumberField = event -> {
             String text = numberField.getText();
             try {
                 int numberOfQuestion = Integer.parseInt(text);
-                System.out.println(TheQuestionListBundle.getAnswer(numberOfQuestion));
-                answer.setText(TheQuestionListBundle.getAnswer(numberOfQuestion));
-            } catch (NumberFormatException exception){
+                System.out.println(QuestionListBundle.getAnswer(numberOfQuestion));
+                answer.setText(QuestionListBundle.getAnswer(numberOfQuestion));
+            } catch (NumberFormatException exception) {
                 System.out.println(exception.getMessage());
-                answer.setText(TheQuestionListBundle.getString("not_a_number"));
+                answer.setText(QuestionListBundle.getString("not_a_number"));
             }
 
         };
@@ -78,13 +77,13 @@ public class QuestionFrame extends JFrame {
 
         comboBox.addActionListener(event -> {
             System.out.println(comboBox.getSelectedItem());
-            TheQuestionListBundle.setLanguage(comboBox.getSelectedItem().toString());
+            QuestionListBundle.setLanguage(comboBox.getSelectedItem().toString());
             System.out.println(Locale.getDefault().toString());
-            System.out.println(TheQuestionListBundle.printListOfQuestions());
-            listQuestions.setText(TheQuestionListBundle.printListOfQuestions());
-            button.setText(TheQuestionListBundle.getString("get_the_answer"));
-            answer.setText(TheQuestionListBundle.getString("please_type_the_number_of_question"));
-            setTitle(TheQuestionListBundle.getString("title"));
+            System.out.println(QuestionListBundle.printListOfQuestions());
+            listQuestions.setText(QuestionListBundle.printListOfQuestions());
+            button.setText(QuestionListBundle.getString("get_the_answer"));
+            answer.setText(QuestionListBundle.getString("please_type_the_number_of_question"));
+            setTitle(QuestionListBundle.getString("title"));
         });
 
     }

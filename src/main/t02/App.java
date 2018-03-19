@@ -15,16 +15,11 @@ public class App {
         System.out.println("Пожалуйста, введите \"ru\" для Русского языка");
         System.out.print("_");
 
-        TheQuestionListBundle.setLanguage(in);
+        QuestionListBundle.setLanguage(in);
 
-        System.out.println(TheQuestionListBundle.printListOfQuestions());
+        System.out.println(QuestionListBundle.printListOfQuestions());
 
-        TheQuestionListBundle.getAnswer(in);
-        Locale.setDefault(new Locale("en", "US"));
-        System.out.println(TheQuestionListBundle.printListOfQuestions());
-
-
-
+        QuestionListBundle.getAnswer(in);
     }
 }
 

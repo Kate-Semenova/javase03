@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by Ekaterina Semenova on 14.03.2018.
  */
-public final class TheQuestionListBundle {
+public final class QuestionListBundle {
     private static final String question = "question";
     private static final String answer = "answer";
     private static final Locale english = new Locale("en", "US");
@@ -13,7 +13,7 @@ public final class TheQuestionListBundle {
     private static final int exitNumber = 666;
     private static ResourceBundle myBundle = ResourceBundle.getBundle("main/t02/QuestionList");
 
-    public static String getString(String key){
+    public static String getString(String key) {
         return myBundle.getString(key);
     }
 
@@ -64,8 +64,9 @@ public final class TheQuestionListBundle {
 
     public static void getAnswer(Scanner scanner) {
         System.out.print(myBundle.getString("please_type_the_number_of_question"));
-        int numberOfQuestion = scanner.nextInt();
-        while (numberOfQuestion != exitNumber) {
+
+        for (int numberOfQuestion = scanner.nextInt(); numberOfQuestion != exitNumber;
+             numberOfQuestion = scanner.nextInt()) {
             System.out.println();
 
             System.out.println(getAnswer(numberOfQuestion));
@@ -73,9 +74,8 @@ public final class TheQuestionListBundle {
 
             System.out.println(String.format(myBundle.getString("exit"), exitNumber));
             System.out.println(myBundle.getString("please_type_the_number_of_question"));
-            numberOfQuestion = scanner.nextInt();
-
         }
+
     }
 
     //ДАЛЕЕ методы для QuestionFrame. Ну он один получился
